@@ -51,5 +51,14 @@ str_to_date( 'date' , '%m/%d/%Y')
 
 
 -- 3.Null values or blank values
+select * from layoffs_staging;
+select * from layoffs_staging
+where total_laid_off is null 
+and percentage_laid_off is null;
+
+select * from layoffs_staging
+where industry is null 
+or industry = '';
+
 -- 4.Remove any columns
 
