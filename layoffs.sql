@@ -20,6 +20,24 @@ from layoffs_staging
 where company = "Cazoo";
 
 -- 2.Standardize the data
+--  2.1 Remove the white spaces in the company column using the trim() function
+select distinct company ,trim(company)
+from layoffs_staging;
+set sql_safe_updates =0;
+update layoffs_staging 
+set company = trim(company);
+
+-- 2.2 standardizing the industry column
+select distinct industry
+from layoffs_staging order by industry;
+
+select *
+from layoffs_staging
+where industry like "crypto%";
+
+-- updating cryptocurrency to crypto
+update layoffs_staging set industry = "Crypto" where industry like "crypto%";
+select *
 -- 3.Null values or blank values
 -- 4.Remove any columns
 
