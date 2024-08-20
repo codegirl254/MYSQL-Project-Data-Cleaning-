@@ -37,7 +37,19 @@ where industry like "crypto%";
 
 -- updating cryptocurrency to crypto
 update layoffs_staging set industry = "Crypto" where industry like "crypto%";
-select *
+
+
+-- 2.3 standardizing the location column
+select * from layoffs_staging;
+select distinct location 
+from layoffs_staging order by 1;
+
+-- 2.4 standardizing the date  column
+select 'date',
+str_to_date( 'date' , '%m/%d/%Y')
+ from layoffs_staging;
+
+
 -- 3.Null values or blank values
 -- 4.Remove any columns
 
